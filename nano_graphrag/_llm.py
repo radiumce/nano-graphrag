@@ -51,7 +51,7 @@ async def gpt_4o_complete(
     prompt, system_prompt=None, history_messages=[], **kwargs
 ) -> str:
     return await openai_complete_if_cache(
-        "gpt-4o",
+        os.environ.get("RAG_BEST_MODEL", "gpt-4o"),
         prompt,
         system_prompt=system_prompt,
         history_messages=history_messages,
@@ -63,7 +63,7 @@ async def gpt_4o_mini_complete(
     prompt, system_prompt=None, history_messages=[], **kwargs
 ) -> str:
     return await openai_complete_if_cache(
-        "gpt-4o-mini",
+        os.environ.get("RAG_CHEAP_MODEL", "gpt-4o"),
         prompt,
         system_prompt=system_prompt,
         history_messages=history_messages,
